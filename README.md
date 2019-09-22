@@ -3,6 +3,8 @@ ember-flipper
 
 Ember addon to build flipping cards. It uses contextual components to add front and back content. This addon was mainly inpsired from [react-flippy](https://github.com/sbayd/react-flippy).
 
+[Demo](https://akashdsouza.github.io/ember-flipper/)
+
 Installation
 ------------------------------------------------------------------------------
 
