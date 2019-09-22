@@ -1,0 +1,27 @@
+body {
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: Merriweather;
+  text-align: center;
+}
+
+.ember-flipper-container {
+  margin-bottom: 5rem;
+}
+
+.front-container, .back-container {
+  padding: 2em;
+  text-align: center;
+  border-radius: 10px;
+  border: 2px solid #CF000F;
+}
+
+
+.front-container {
+  color: #CF000F;
+}
+
+.back-container {
+  color: #007A4B;
+  border-color: #007A4B;
+}

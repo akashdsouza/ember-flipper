@@ -1,0 +1,1 @@
+export { default } from 'ember-flipper/components/ember-flipper-back';
