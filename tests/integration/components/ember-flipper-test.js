@@ -2,6 +2,8 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import { click, triggerEvent } from '@ember/test-helpers';
+import { percySnapshot } from 'ember-percy';
 
 module('Integration | Component | ember-flipper', function(hooks) {
   setupRenderingTest(hooks);
@@ -22,5 +24,88 @@ module('Integration | Component | ember-flipper', function(hooks) {
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
+  });
+
+  test('flipped from outside', async function(assert) {
+    await render(hbs`
+    <EmberFlipper
+      @flipped=true
+    as |flipper|>
+      <flipper.Front>
+        Front
+      </flipper.Front>
+      <flipper.Back>
+        Back
+      </flipper.Back>
+    </EmberFlipper>
+    `);
+    assert.dom('.ember-flipper-container').hasClass('flipped', 'flipped class should have been added');
+  });
+
+  test('vertical class is added', async function(assert) {
+    await render(hbs`
+      <EmberFlipper
+        @vertical=true
+      as |flipper|>
+        <flipper.Front>
+          Front
+        </flipper.Front>
+        <flipper.Back>
+          Back
+        </flipper.Back>
+      </EmberFlipper>
+    `);
+    assert.dom('.ember-flipper-container').hasClass('ember-flipper-vertical', 'vertical class should have been added');
+  });
+
+  test('flips on click', async function(assert) {
+    await render(hbs`
+    <EmberFlipper
+      @flipOn="click"
+    as |flipper|>
+      <flipper.Front>
+        <div class="front-container">
+          Front
+        </div>
+      </flipper.Front>
+      <flipper.Back>
+        <div class="back-container">
+          Back
+        </div>
+      </flipper.Back>
+    </EmberFlipper>
+    `);
+    await percySnapshot('initial render');
+    assert.dom('.ember-flipper-container').doesNotHaveClass('flipped', 'flipped class should not be added before click');
+    await click('.front-container');
+    assert.dom('.ember-flipper-container').hasClass('flipped', 'flipped class should be added after click');
+    await percySnapshot('flipped on click');
+    await click('.front-container');
+    assert.dom('.ember-flipper-container').doesNotHaveClass('flipped', 'flipped class should removed after click');
+  });
+
+  test('flips on hover', async function (assert) {
+    await render(hbs`
+    <EmberFlipper
+      @flipOn="hover"
+    as |flipper|>
+      <flipper.Front>
+        <div class="front-container">
+          Front
+        </div>
+      </flipper.Front>
+      <flipper.Back>
+        <div class="back-container">
+          Back
+        </div>
+      </flipper.Back>
+    </EmberFlipper>
+    `);
+    assert.dom('.ember-flipper-container').doesNotHaveClass('flipped', 'flipped class should not be added before hover');
+    await triggerEvent('.front-container', 'mouseenter');
+    assert.dom('.ember-flipper-container').hasClass('flipped', 'flipped class should be added after hover');
+    await percySnapshot('flipped on hover');
+    await triggerEvent('.front-container', 'mouseleave');
+    assert.dom('.ember-flipper-container').doesNotHaveClass('flipped', 'flipped class should be removed after hover');
   });
 });
