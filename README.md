@@ -14,15 +14,15 @@ ember install ember-flipper
 
 Usage
 ------------------------------------------------------------------------------
-```
+```hbs
 <EmberFlipper
   @flipOn="click"
 as |flipper|>
   <flipper.Front>
-    <!-- Front Content -->
+    {{!-- Front Content --}}
   </flipper.Front>
   <flipper.Back>
-    <!-- Back Content -->
+    {{!-- Back Content --}}
   </flipper.Back>
 </EmberFlipper>
 ```
