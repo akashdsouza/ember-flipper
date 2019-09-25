@@ -14,7 +14,7 @@ ember install ember-flipper
 
 Usage
 ------------------------------------------------------------------------------
-
+```
 <EmberFlipper
   @flipOn="click"
 as |flipper|>
@@ -25,21 +25,23 @@ as |flipper|>
     <!-- Back Content -->
   </flipper.Back>
 </EmberFlipper>
+```
 
 Options
 ------------------------------------------------------------------------------
 
 `flipOn` - Trigger for flipping - `click | hover | none` 
+
 `vertical` - Flips card vertically if `true`. Defaults to `false`
+
 `flipDuration` - Duration for the flip in ms. Defaults to `600`. Separate durations for the front card and back card may be speficied, but the transition may not be smooth.
+
 `flipped` - Prop to manually flip the card. It is recommended to not combine this with `flipOn` unless `flipOn` is set to `none`
 
-Compatibility
+Credits
 ------------------------------------------------------------------------------
 
-* Ember.js v2.18 or above
-* Ember CLI v2.13 or above
-* Node.js v8 or above
+Styles have mostly been ported from [David Walsh's blog](https://davidwalsh.name/css-flip)
 
 Contributing
 ------------------------------------------------------------------------------
