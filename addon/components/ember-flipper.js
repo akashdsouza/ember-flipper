@@ -5,7 +5,7 @@ import { layout, className, classNames } from "@ember-decorators/component";
 @layout(templateLayout)
 @classNames('ember-flipper-container')
 export default class EmberFlipper extends Component {
-  @className('flipped')
+  @className('ember-flipper-flipped')
   flipped
 
   @className('ember-flipper-vertical')

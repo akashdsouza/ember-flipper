@@ -39,7 +39,8 @@ module('Integration | Component | ember-flipper', function(hooks) {
       </flipper.Back>
     </EmberFlipper>
     `);
-    assert.dom('.ember-flipper-container').hasClass('flipped', 'flipped class should have been added');
+    assert.dom('.ember-flipper-container').hasClass('ember-flipper-flipped', 'flipped class should have been added');
+    await percySnapshot('flipped');
   });
 
   test('vertical class is added', async function(assert) {
@@ -56,6 +57,7 @@ module('Integration | Component | ember-flipper', function(hooks) {
       </EmberFlipper>
     `);
     assert.dom('.ember-flipper-container').hasClass('ember-flipper-vertical', 'vertical class should have been added');
+    await percySnapshot('initial render');
   });
 
   test('flips on click', async function(assert) {
@@ -76,12 +78,12 @@ module('Integration | Component | ember-flipper', function(hooks) {
     </EmberFlipper>
     `);
     await percySnapshot('initial render');
-    assert.dom('.ember-flipper-container').doesNotHaveClass('flipped', 'flipped class should not be added before click');
+    assert.dom('.ember-flipper-container').doesNotHaveClass('ember-flipper-flipped', 'flipped class should not be added before click');
     await click('.front-container');
-    assert.dom('.ember-flipper-container').hasClass('flipped', 'flipped class should be added after click');
-    await percySnapshot('flipped on click');
+    assert.dom('.ember-flipper-container').hasClass('ember-flipper-flipped', 'flipped class should be added after click');
+    await percySnapshot('flipped');
     await click('.front-container');
-    assert.dom('.ember-flipper-container').doesNotHaveClass('flipped', 'flipped class should removed after click');
+    assert.dom('.ember-flipper-container').doesNotHaveClass('ember-flipper-flipped', 'flipped class should removed after click');
   });
 
   test('flips on hover', async function (assert) {
@@ -101,11 +103,11 @@ module('Integration | Component | ember-flipper', function(hooks) {
       </flipper.Back>
     </EmberFlipper>
     `);
-    assert.dom('.ember-flipper-container').doesNotHaveClass('flipped', 'flipped class should not be added before hover');
+    assert.dom('.ember-flipper-container').doesNotHaveClass('ember-flipper-flipped', 'flipped class should not be added before hover');
     await triggerEvent('.front-container', 'mouseenter');
-    assert.dom('.ember-flipper-container').hasClass('flipped', 'flipped class should be added after hover');
-    await percySnapshot('flipped on hover');
+    assert.dom('.ember-flipper-container').hasClass('ember-flipper-flipped', 'flipped class should be added after hover');
+    await percySnapshot('flipped');
     await triggerEvent('.front-container', 'mouseleave');
-    assert.dom('.ember-flipper-container').doesNotHaveClass('flipped', 'flipped class should be removed after hover');
+    assert.dom('.ember-flipper-container').doesNotHaveClass('ember-flipper-flipped', 'flipped class should be removed after hover');
   });
 });

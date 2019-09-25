@@ -28,11 +28,11 @@
   transform: rotateX(0deg) rotateY(-180deg);
 }
 
-.ember-flipper-container.flipped .ember-flipper-front {
+.ember-flipper-container.ember-flipper-flipped .ember-flipper-front {
   transform: rotateX(0deg) rotateY(180deg);
 }
 
-.ember-flipper-container.flipped .ember-flipper-back {
+.ember-flipper-container.ember-flipper-flipped .ember-flipper-back {
   transform: rotateX(0deg) rotateY(0deg);
 }
 
@@ -40,10 +40,10 @@
   transform: rotateX(-180deg) rotateY(0deg);
 }
 
-.ember-flipper-container.ember-flipper-vertical.flipped .ember-flipper-front {
+.ember-flipper-container.ember-flipper-vertical.ember-flipper-flipped .ember-flipper-front {
   transform: rotateX(180deg) rotateY(0deg);
 }
 
-.ember-flipper-container.ember-flipper-vertical.flipped .ember-flipper-back {
+.ember-flipper-container.ember-flipper-vertical.ember-flipper-flipped .ember-flipper-back {
   transform: rotateX(0deg) rotateY(0deg);
 }
