@@ -2,8 +2,8 @@
 <label>
   <input
     type="checkbox"
-    value={{vertical}}
-    onchange={{action toggleProperty "vertical"}}
+    value={{this.vertical}}
+    onchange={{fn this.toggleProperty "vertical"}}
   >
   Flip Vertical
 </label>
@@ -11,7 +11,7 @@
 <h2>Click</h2>
 <EmberFlipper
   @flipOn="click"
-  @vertical={{vertical}}
+  @vertical={{this.vertical}}
 as |flipper|>
   <flipper.Front>
     <div class="front-container">
@@ -28,7 +28,7 @@ as |flipper|>
 <h2>Hover</h2>
 <EmberFlipper
   @flipOn="hover"
-  @vertical={{vertical}}
+  @vertical={{this.vertical}}
 as |flipper|>
   <flipper.Front>
     <div class="front-container">
@@ -44,18 +44,13 @@ as |flipper|>
 
 <h2>None</h2>
 <label>
-  {{!-- 
-    This would have to be changed
-    {{on "click" (fn toggleProperty "flipped")}}
-    with toggleProperty bound by @action in the controller
-  --}}
-  <button type="button" {{action toggleProperty "flipped"}}>
+  <button type="button" {{on "click" (fn this.toggleProperty "flipped")}}>
     Flip container
   </button>
 </label>
 <EmberFlipper
-  @flipped={{flipped}}
-  @vertical={{vertical}}
+  @flipped={{this.flipped}}
+  @vertical={{this.vertical}}
 as |flipper|>
   <flipper.Front>
     <div class="front-container">

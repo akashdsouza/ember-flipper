@@ -52,6 +52,21 @@ module.exports = function() {
           npm: {
             devDependencies: {}
           }
+        },
+        {
+          name: 'ember-classic',
+          env: {
+            EMBER_OPTIONAL_FEATURES: JSON.stringify({
+              'application-template-wrapper': true,
+              'default-async-observers': false,
+              'template-only-glimmer-components': false
+            })
+          },
+          npm: {
+            ember: {
+              edition: 'classic'
+            }
+          }
         }
       ]
     };

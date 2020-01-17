@@ -66,12 +66,12 @@ module('Integration | Component | ember-flipper', function(hooks) {
       @flipOn="click"
     as |flipper|>
       <flipper.Front>
-        <div class="front-container">
+        <div class="front">
           Front
         </div>
       </flipper.Front>
       <flipper.Back>
-        <div class="back-container">
+        <div class="back">
           Back
         </div>
       </flipper.Back>
@@ -79,10 +79,10 @@ module('Integration | Component | ember-flipper', function(hooks) {
     `);
     await percySnapshot('initial render');
     assert.dom('.ember-flipper-container').doesNotHaveClass('ember-flipper-flipped', 'flipped class should not be added before click');
-    await click('.front-container');
+    await click('.front');
     assert.dom('.ember-flipper-container').hasClass('ember-flipper-flipped', 'flipped class should be added after click');
     await percySnapshot('flipped');
-    await click('.front-container');
+    await click('.front');
     assert.dom('.ember-flipper-container').doesNotHaveClass('ember-flipper-flipped', 'flipped class should removed after click');
   });
 
@@ -92,22 +92,22 @@ module('Integration | Component | ember-flipper', function(hooks) {
       @flipOn="hover"
     as |flipper|>
       <flipper.Front>
-        <div class="front-container">
+        <div class="front">
           Front
         </div>
       </flipper.Front>
       <flipper.Back>
-        <div class="back-container">
+        <div class="back">
           Back
         </div>
       </flipper.Back>
     </EmberFlipper>
     `);
     assert.dom('.ember-flipper-container').doesNotHaveClass('ember-flipper-flipped', 'flipped class should not be added before hover');
-    await triggerEvent('.front-container', 'mouseenter');
+    await triggerEvent('.front', 'mouseenter');
     assert.dom('.ember-flipper-container').hasClass('ember-flipper-flipped', 'flipped class should be added after hover');
     await percySnapshot('flipped');
-    await triggerEvent('.front-container', 'mouseleave');
+    await triggerEvent('.front', 'mouseleave');
     assert.dom('.ember-flipper-container').doesNotHaveClass('ember-flipper-flipped', 'flipped class should be removed after hover');
   });
 });
