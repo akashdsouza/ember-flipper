@@ -3,7 +3,7 @@
   <input
     type="checkbox"
     value={{this.vertical}}
-    onchange={{fn this.toggleProperty "vertical"}}
+    onchange={{fn this.toggleProp "vertical"}}
   >
   Flip Vertical
 </label>
@@ -44,7 +44,7 @@ as |flipper|>
 
 <h2>None</h2>
 <label>
-  <button type="button" {{on "click" (fn this.toggleProperty "flipped")}}>
+  <button type="button" {{on "click" (fn this.toggleProp "flipped")}}>
     Flip container
   </button>
 </label>
@@ -63,5 +63,4 @@ as |flipper|>
     </div>
   </flipper.Back>
 </EmberFlipper>
-
-{{outlet}}
+<a href="https://github.com/akashdsouza/ember-flipper">Visit repo</a>
