@@ -1,1 +1,0 @@
-export { default } from 'ember-flipper/components/ember-flipper-front';

@@ -1,7 +1,7 @@
 ember-flipper
 ==============================================================================
 
-Ember addon to build flipping cards. It uses contextual components to add front and back content. This addon was mainly inpsired from [react-flippy](https://github.com/sbayd/react-flippy).
+Ember addon to build flipping cards. It provides both a component and a modifier for flipping. Component is just a tiny wrapper around the modifier. This addon was mainly inpsired from [react-flippy](https://github.com/sbayd/react-flippy).
 
 [Demo](https://akashdsouza.github.io/ember-flipper/)
 
@@ -14,23 +14,44 @@ ember install ember-flipper
 
 Usage
 ------------------------------------------------------------------------------
+Component
+------------------------------------------------------------------------------
 ```hbs
 <EmberFlipper
   @flipOn="click"
-as |flipper|>
-  <flipper.Front>
+>
+  <div data-ember-flipper-front>
     {{!-- Front Content --}}
-  </flipper.Front>
-  <flipper.Back>
+  </div>
+  <div data-ember-flipper-back>
     {{!-- Back Content --}}
-  </flipper.Back>
+  </div>
 </EmberFlipper>
 ```
+
+It is necessary to wrap the front content in an element with attribute `data-ember-flipper-front` and the back content in an element with the attribute `data-ember-flipper-back`
+
+Modifier
+------------------------------------------------------------------------------
+```hbs
+<div data-ember-flipper-container>
+  <div {{ember-flip "click"}}>
+    <div data-ember-flipper-front>
+      {{!-- Front Content --}}
+    </div>
+    <div data-ember-flipper-back>
+      {{!-- Back Content --}}
+    </div>
+  </div>
+</div>
+```
+
+It is necessary to add the `data-ember-flipper-container` attribute to the parent element of the flipping container to provide `perspective` style(1000px). If you are omitting the `data-ember-flipper-container` attribute, please be sure to add the perspective style to the parent element. Alternatively, you can use the component form which contains the wrapping logic.
 
 Options
 ------------------------------------------------------------------------------
 
-`flipOn` - Trigger for flipping - `click | hover | none` 
+`flipOn` - Trigger for flipping - `click | hover | none`. If you are using the modifier, this parameter should be passed as a positional param.
 
 `vertical` - Flips card vertically if `true`. Defaults to `false`
 
