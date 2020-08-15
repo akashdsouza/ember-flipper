@@ -11,35 +11,34 @@
 <h2>Click</h2>
 <EmberFlipper
   @flipOn="click"
-  @vertical={{this.vertical}}
-as |flipper|>
-  <flipper.Front>
+  @vertical={{this.vertical}}>
+  <div data-ember-flipper-front>
     <div class="front-container">
       Front
     </div>
-  </flipper.Front>
-  <flipper.Back>
+  </div>
+  <div data-ember-flipper-back>
     <div class="back-container">
       Back
     </div>
-  </flipper.Back>
+  </div>
 </EmberFlipper>
 
 <h2>Hover</h2>
 <EmberFlipper
   @flipOn="hover"
   @vertical={{this.vertical}}
-as |flipper|>
-  <flipper.Front>
+>
+  <div data-ember-flipper-front>
     <div class="front-container">
       Front
     </div>
-  </flipper.Front>
-  <flipper.Back>
+  </div>
+  <div data-ember-flipper-back>
     <div class="back-container">
       Back
     </div>
-  </flipper.Back>
+  </div>
 </EmberFlipper>
 
 <h2>None</h2>
@@ -51,16 +50,16 @@ as |flipper|>
 <EmberFlipper
   @flipped={{this.flipped}}
   @vertical={{this.vertical}}
-as |flipper|>
-  <flipper.Front>
+>
+  <div data-ember-flipper-front>
     <div class="front-container">
       Front
     </div>
-  </flipper.Front>
-  <flipper.Back>
+  </div>
+  <div data-ember-flipper-back>
     <div class="back-container">
       Back
     </div>
-  </flipper.Back>
+  </div>
 </EmberFlipper>
 <a href="https://github.com/akashdsouza/ember-flipper">Visit repo</a>

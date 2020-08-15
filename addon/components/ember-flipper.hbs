@@ -1,0 +1,12 @@
+<div data-ember-flipper-container>
+  <div
+    {{ember-flip
+      @flipOn
+      flipped=@flipped
+      vertical=@vertical
+      flipDuration=@flipDuration
+    }}
+  >
+    {{yield}}
+  </div>
+</div>
